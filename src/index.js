@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from "redux";
+import {compose, createStore} from "redux";
 import {rootReducer} from "./redux/rootReducer";
 import {Provider} from "react-redux"
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, compose(
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+))
 
 const app = (
     <Provider store={store}>
